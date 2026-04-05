@@ -112,7 +112,12 @@ function formatOutput(data) {
   const tokensLimit = (data.limits || []).find((l) => l.type === 'TOKENS_LIMIT');
   if (!tokensLimit) return `${DIM}ZAI: no data${RESET}`;
   const pct = tokensLimit.percentage || 0;
-  return `${colorForPercent(pct)}ZAI ${bar(pct, 5)} ${pct}%${RESET}`;
+  let suffix = '';
+  if (pct >= 100 && tokensLimit.nextResetTime) {
+    const cd = formatCountdown(tokensLimit.nextResetTime);
+    if (cd) suffix = ` ⏳ ${cd}`;
+  }
+  return `${colorForPercent(pct)}ZAI ${bar(pct, 5)} ${pct}%${suffix}${RESET}`;
 }
 
 function readStdin() {
