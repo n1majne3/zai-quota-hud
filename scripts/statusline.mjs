@@ -25,6 +25,18 @@ function bar(pct, width = 10) {
   return '█'.repeat(filled) + '░'.repeat(empty);
 }
 
+function formatCountdown(nextResetTime) {
+  const ms = new Date(nextResetTime).getTime() - Date.now();
+  if (ms <= 0) return null;
+  const totalMin = Math.floor(ms / 60_000);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  const s = Math.floor((ms % 60_000) / 1000);
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m`;
+  return `${s}s`;
+}
+
 function readCache() {
   try {
     const stat = fs.statSync(CACHE_PATH);
