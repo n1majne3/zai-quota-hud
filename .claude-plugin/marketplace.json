@@ -1,0 +1,20 @@
+{
+  "name": "zai-quota-hud",
+  "owner": {
+    "name": "n1majne3",
+    "email": ""
+  },
+  "metadata": {
+    "description": "Display ZAI/GLM Coding Plan quota usage in the Claude Code statusline",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "zai-quota-hud",
+      "source": "./",
+      "description": "Shows your ZAI/GLM Coding Plan token quota usage in the Claude Code statusline. Color-coded progress bar with automatic color changes: green (<50%), yellow (50-80%), red (>80%). Includes reset countdown at 100%.",
+      "category": "monitoring",
+      "tags": ["zai", "zhipu", "glm", "quota", "statusline", "usage", "monitoring"]
+    }
+  ]
+}
