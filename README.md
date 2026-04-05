@@ -1,5 +1,7 @@
 # ZAI Quota HUD
 
+[中文](README.zh-CN.md)
+
 A Claude Code plugin that displays your ZAI/GLM Coding Plan token quota usage in the statusline.
 
 ![ZAI ██░░░ 37%](https://img.shields.io/badge/statusline-quota-brightgreen) ![License](https://img.shields.io/github/license/n1majne3/zai-quota-hud) ![Stars](https://img.shields.io/github/stars/n1majne3/zai-quota-hud)
