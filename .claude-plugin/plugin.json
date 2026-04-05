@@ -1,0 +1,9 @@
+{
+  "name": "zai-quota-hud",
+  "description": "Display ZAI/GLM Coding Plan quota usage in the Claude Code statusline",
+  "version": "1.0.0",
+  "commands": [
+    "./commands/setup.md",
+    "./commands/quota.md"
+  ]
+}
