@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Display ZAI/GLM Coding Plan quota usage in the Claude Code statusline",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
