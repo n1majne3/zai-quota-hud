@@ -19,7 +19,7 @@ function colorForPercent(pct) {
   return GREEN;
 }
 
-function bar(pct, width = 10) {
+function bar(pct, width = 8) {
   const filled = Math.round((pct / 100) * width);
   const empty = width - filled;
   return '█'.repeat(filled) + '░'.repeat(empty);
@@ -110,14 +110,14 @@ function fetchQuota(baseUrl, authToken) {
 
 function formatOutput(data) {
   const tokensLimit = (data.limits || []).find((l) => l.type === 'TOKENS_LIMIT');
-  if (!tokensLimit) return `${DIM}ZAI: no data${RESET}`;
+  if (!tokensLimit) return `${DIM}Z.ai: no data${RESET}`;
   const pct = tokensLimit.percentage || 0;
   let suffix = '';
-  if (pct >= 100 && tokensLimit.nextResetTime) {
+  if (tokensLimit.nextResetTime) {
     const cd = formatCountdown(tokensLimit.nextResetTime);
-    if (cd) suffix = ` ⏳ ${cd}`;
+    if (cd) suffix = ` ⏳${cd}`;
   }
-  return `${colorForPercent(pct)}ZAI ${bar(pct, 5)} ${pct}%${suffix}${RESET}`;
+  return `${colorForPercent(pct)}Z.ai ${bar(pct)} ${pct}%${suffix}${RESET}`;
 }
 
 function readStdin() {
@@ -148,14 +148,14 @@ async function main() {
   const authToken = process.env.ANTHROPIC_AUTH_TOKEN || '';
 
   if (!authToken || !baseUrl) {
-    console.log(`${DIM}ZAI: not configured (set ANTHROPIC_BASE_URL & ANTHROPIC_AUTH_TOKEN)${RESET}`);
+    console.log(`${DIM}Z.ai: not configured (set ANTHROPIC_BASE_URL & ANTHROPIC_AUTH_TOKEN)${RESET}`);
     return;
   }
 
   let isZai = baseUrl.includes('api.z.ai');
   let isZhipu = baseUrl.includes('open.bigmodel.cn') || baseUrl.includes('dev.bigmodel.cn');
   if (!isZai && !isZhipu) {
-    console.log(`${DIM}ZAI: unsupported base URL${RESET}`);
+    console.log(`${DIM}Z.ai: unsupported base URL${RESET}`);
     return;
   }
 
@@ -172,7 +172,7 @@ async function main() {
       if (stale) {
         console.log(formatOutput(stale) + ` ${DIM}(stale)${RESET}`);
       } else {
-        console.log(`${DIM}ZAI: unavailable (${e.message})${RESET}`);
+        console.log(`${DIM}Z.ai: unavailable (${e.message})${RESET}`);
       }
       return;
     }
@@ -182,5 +182,5 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.log(`${DIM}ZAI: error (${e.message})${RESET}`);
+  console.log(`${DIM}Z.ai: error (${e.message})${RESET}`);
 });
