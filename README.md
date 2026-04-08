@@ -79,3 +79,7 @@ ZAI █████ 100% ⏳ 1h 23m
 ## License
 
 MIT — see [LICENSE](LICENSE)
+
+## 友情链接
+
+- [Linux Do 社区](https://linux.do/)  
